@@ -1,6 +1,6 @@
 const { Perms } = require("../Validation/Permissions")
 const { Client } = require("discord.js")
-const {promisify } = require("util")
+const { promisify } = require("util")
 const { glob } = require("glob")
 const Ascii = require("ascii-table")
 
@@ -39,13 +39,13 @@ module.exports = async (client) => {
 
     // Perms Check
 
-    client.on("Ready", async () => {
-        const MainGuild = await client.guild.cache.get("996664256512655360");
-        MainGuild.commands.set(CommandsArray).then(async (command) => {
+    client.on("ready", async () => {
+        const MainGuild = await client.guilds.cache.get("996664256512655360");
+        MainGuild.commands.set(commandsArray).then(async (command) => {
             const Roles = (commandName) => {
-                const cmdPerms = CommandsArray.find((c => c.name === command.name).permission);
+                const cmdPerms = commandsArray.find((c) => c.name === commandName).permission;
                 if(!cmdPerms) return null;
-                return MainGuild.role.cache.filter((r) => r.permissions.has(cmdPerms))
+                return MainGuild.roles.cache.filter((r) => r.permissions.has(cmdPerms))
             }
 
             const fullPermissions = command.reduce((accumulator, r) =>{
@@ -58,7 +58,6 @@ module.exports = async (client) => {
                 }, []);
                 return [...accumulator, {id: r.id, permissions}]
             }, []);
-            await MainGuild.commands.permissions.set({ fullPermissions });
                 });
             });
         };

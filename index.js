@@ -5,7 +5,7 @@ const { token, Database } = require('./config.json');
 const client = new Client({intents: 8});
 
 
-client.commands = new Collection
+client.commands = new Collection()
 require("./Handlers/Events")(client);
 require("./Handlers/Commands")(client);
 
