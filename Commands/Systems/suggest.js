@@ -12,27 +12,27 @@ module.exports = {
             type: "STRING",
             choices: [
                 {
-                    name: "Command",
-                    value: "Command"
+                    name: "command",
+                    value: "command"
                 },
                 {
-                    name: "Event",
-                    value: "Event"
+                    name: "event",
+                    value: "event"
                 },
                 {
-                    name: "System",
-                    value: "System"
+                    name: "system",
+                    value: "system"
                 }
             ]
         },
         {
-            name: "Name",
+            name: "name",
             description: "Provide a name for your suggestion.",
             type: "STRING",
             required: true
         },
         {
-            name: "Concept",
+            name: "concept",
             description: "Tell us what you'd like to see",
             type: "STRING",
             required: true

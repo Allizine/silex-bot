@@ -4,7 +4,9 @@ require("../../Events/Client/ready")
 
 module.exports = {
     name: "status",
+    permission: "ADMINISTRATOR",
     description: "Displays the status of the bot",
+    
     /**
      * 
      * @param {CommandInteraction} interaction 

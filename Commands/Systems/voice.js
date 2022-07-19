@@ -6,7 +6,7 @@ module.exports = {
     options: [
         {
             name: "invite",
-            type: "SUB_command",
+            type: "SUB_COMMAND",
             description: "invite people to your channel!",
             options: [
                 {
@@ -19,7 +19,7 @@ module.exports = {
         },
             {
                 name: "disallow",
-                type: "SUB_command",
+                type: "SUB_COMMAND",
                 description: "Removes someone's access to the channel",
                 options: [
                     {
@@ -33,7 +33,7 @@ module.exports = {
             },
             {
                 name: "name",
-                type: "SUB_command",
+                type: "SUB_COMMAND",
                 description: "name your channel!",
                 options: [
                     {
@@ -46,7 +46,7 @@ module.exports = {
             },
             {
                 name: "public",
-                type: "SUB_command",
+                type: "SUB_COMMAND",
                 description: "make your channel public",
                 options: [
                     {

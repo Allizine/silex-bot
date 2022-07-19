@@ -7,7 +7,7 @@ module.exports = {
     once: true,
     execute(client) {
         console.log("The Client is now ready!")
-        client.user.setActivity("Hello!" ,{type: "WATCHING"})
+        client.user.setActivity("YOU CRY!" ,{type: "WATCHING"})
 
         if(!Database) return;
         mongoose.connect(Database, {
