@@ -1,8 +1,8 @@
-// require the necc discordjs classes
+// require discordjs classes
 const fs = require('node:fs');
 const { Client, Collection, Intents } = require('discord.js');
 const { token, Database } = require('./config.json');
-const client =new Client({intents: 32767});
+const client = new Client({intents: 8});
 
 
 client.commands = new Collection
