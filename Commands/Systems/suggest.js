@@ -12,16 +12,8 @@ module.exports = {
             type: "STRING",
             choices: [
                 {
-                    name: "command",
-                    value: "command"
-                },
-                {
-                    name: "event",
-                    value: "event"
-                },
-                {
-                    name: "system",
-                    value: "system"
+                    name: "feature",
+                    value: "feature"
                 }
             ]
         },
