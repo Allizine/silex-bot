@@ -24,13 +24,6 @@ module.exports = {
       type: ApplicationCommandOptionType.Role,
       required: true,
     },
-    {
-      name: "color",
-      descripttion: "Select a Color",
-      type: ApplicationCommandOptionType.String,
-      choices: [{name: "Black", value: "#000000"},{name: "Cyan", value: "#00ffff"},],
-      required: true,
-    },
   ],
 
   run: async (client, interaction) => {
@@ -38,13 +31,14 @@ module.exports = {
     const msg = option.getString("message");
     const channel = option.getChannel("channel");
     const mention = option.getRole("mention");
-    const color = option.getString("color");
     const Announcement = new EmbedBuilder()
-      .setColor(color)
-      .setAuthor({name: interaction.user.tag, iconURL: interaction.user.avatarURL()})
+      .setColor("#00ffff")
+      .setAuthor({name: interaction.user.username, iconURL: interaction.user.avatarURL()})
       .setTitle("Community Announcement")
-      .setDescription(msg)
+      .setDescription(msg.replaceAll("<br>","\n"))
+      .setImage("https://www.dropbox.com/s/tcoqwpkxgg3e1gg/silexcommunityannounce.png?dl=1")
       .setTimestamp()
+      .setFooter({text: "Created by Silvae & Julexar", iconURL: "https://www.dropbox.com/s/e2e5a6sw3d87hqd/SILEX.png?dl=1"})
     await channel.send({content: `${mention}`, embeds: [Announcement]});
     interaction.reply({content: "Successfully sent the Announcement", ephemeral: true});
   },
