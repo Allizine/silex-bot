@@ -24,6 +24,85 @@ module.exports = {
       type: ApplicationCommandOptionType.Role,
       required: true,
     },
+    {
+      name: "color",
+      description: "Select a Color",
+      type: ApplicationCommandOptionType.String,
+      choices: [
+        {
+          name: "Black",
+          value: "#000000",
+        },
+        {
+          name: "White",
+          value: "#ffffff",
+        },
+        {
+          name: "Light Grey",
+          value: "#c5c5c5",
+        },
+        {
+          name: "Grey",
+          value: "#acacac",
+        },
+        {
+          name: "Dark Grey",
+          value: "#575757",
+        },
+        {
+          name: "Red",
+          value: "#ff0000",
+        },
+        {
+          name: "Orange",
+          value: "#ff7600",
+        },
+        {
+          name: "Yellow",
+          value: "ffe500",
+        },
+        {
+          name: "Lime",
+          value: "#64ff00",
+        },
+        {
+          name: "Green",
+          value: "#00c404",
+        },
+        {
+          name: "Dark Green",
+          value: "#006f02",
+        },
+        {
+          name: "Cyan",
+          value: "#00ffff",
+        },
+        {
+          name: "Blue",
+          value: "#0090ff",
+        },
+        {
+          name: "Dark Blue",
+          value: "#0027ff",
+        },
+        {
+          name: "Purple",
+          value: "#701cff",
+        },
+        {
+          name: "Dark Purple",
+          value: "#350099",
+        },
+        {
+          name: "Pink",
+          value: "#e09fff",
+        },
+        {
+          name: "Magenta",
+          value: "#ad00ff",
+        },
+      ],
+    },
   ],
 
   run: async (client, interaction) => {
@@ -31,8 +110,9 @@ module.exports = {
     const msg = option.getString("message");
     const channel = option.getChannel("channel");
     const mention = option.getRole("mention");
+    const color = option.getString("color");
     const Announcement = new EmbedBuilder()
-      .setColor("#00ffff")
+      .setColor(color)
       .setAuthor({name: interaction.user.username, iconURL: interaction.user.avatarURL()})
       .setTitle("Community Announcement")
       .setDescription(msg.replaceAll("<br>","\n"))
