@@ -24,11 +24,14 @@ module.exports = {
   run: async (client, interaction) => {
     const member = interaction.options.getUser('member');
     const message = interaction.options.getString('message');
+    const name = interaction.user.tag;
+    const avatar = interaction.user.avatarURL();
     const msg = new EmbedBuilder()
       .setColor('#00ffff')
       .setTitle("Staff Message")
-      .setAuthor({name: interaction.member.username, iconURL: interaction.member.avatarURL()})
+      .setAuthor({name: name, iconURL: avatar})
       .setDescription(message)
     await member.send({embeds: [msg]});
+    interaction.reply({content: "Successfully sent a DM to "+member.tag, ephemeral: true});
   },
 };
