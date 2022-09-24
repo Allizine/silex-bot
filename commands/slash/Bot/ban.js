@@ -1,17 +1,21 @@
-const { EmbedBuilder, ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const ms = require("ms");
 module.exports = {
-  name: "ban",
-  description: "Bans a member",
+  name: 'ban',
+  description: 'Bans a member',
+  permissions: {
+    member: ['ADMINISTRATOR'],
+  },
   options: [
     {
-      name: "member",
-      description: "Select a member.",
+      name: 'member',
+      description: 'Select a member.',
       type: ApplicationCommandOptionType.User,
       required: true,
     },
     {
-      name: "reason",
-      description: "Define a reason.",
+      name: 'reason',
+      description: 'Define a reason.',
       type: ApplicationCommandOptionType.String,
       required: false,
     },
@@ -21,29 +25,33 @@ module.exports = {
     const guild = client.guilds.cache.get('996664256512655360');
     const channel = guild.channels.cache.get('996668966279843840');
     const user = interaction.options.getUser('member');
-    const mod = interaction.user.id;
+    const mod = interaction.user;
     var reason = interaction.options.getString('reason');
-    if (reason==undefined || reason=="" || reason==" ") {
-      reason="The Ban Hammer has spoken.";
-    }
-    const banmsg = new EmbedBuilder()
+    const member = guild.users.cache.get(user.id);
+    const msg = new EmbedBuilder()
       .setColor('#ff0000')
-      .setTitle('You have been banned from Silex!')
-      .setDescription(`Reason: ${reason}`)
-      .addFields({name: "Ban Appeal", value: "[Click Here](https://dyno.gg/form/60846298)"})
+      .setAuthor({name: mod.username, iconURL: mod.avatarURL()})
+      .setTitle("You have been banned from Silex!")
+      .addFields(
+        {name: "Duration", value: "Permanent", inline: true},
+        {name: "Reason", value: reason, inline: true},
+        {name: "Ban Appeal", value: "[Click Here](https://dyno.gg/form/60846298)"}
+      )
       .setTimestamp()
-    const response = new EmbedBuilder()
+    const log = new EmbedBuilder()
       .setColor('#ff0000')
       .setAuthor({name: "Member banned", iconURL: user.avatarURL()})
       .addFields(
         {name: "User", value: `<@${user.id}>`},
-        {name: "Moderator", value: `<@${mod}>`},
-        {name: "Reason", value: reason}
+        {name: "Moderator", value: `<@${mod.id}>`},
+        {name: "Duration", value: "Permanent", inline: true},
+        {name: "Reason", value: reason, inline: true}
       )
+      .setFooter({text: `ID: ${user.id}`})
       .setTimestamp()
-    await user.send({embeds: [banmsg]});
-    await interaction.reply({embeds: [response], ephemeral: true});
-    await channel.send({embeds: [response]});
-    await guild.members.ban(user, reason);
+    await user.send({embeds: [msg]});
+    await interaction.reply({embeds: [log], ephemeral: true});
+    await channel.send({embeds: [log]});
+    await member.ban({reason: reason});
   },
 };
