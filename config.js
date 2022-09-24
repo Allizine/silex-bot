@@ -3,10 +3,12 @@ module.exports = {
     default_prefix: '!',
     owners: ['676518256282042393'],
     presence: {
-        activities: { 
-            name: 'watching over Silex Community',
-            type: 'WATCHING',
-        },
+        activities: [
+          {
+            name: 'Silex Community',
+            type: 3,
+          },
+        ],
         status: 'online',
     },
 };
