@@ -1,6 +1,6 @@
 module.exports = {
     token: 'TOKEN HERE',
-    default_prefix: '!',
+    default_prefix: 's!',
     owners: ['676518256282042393'],
     presence: {
         activities: [
