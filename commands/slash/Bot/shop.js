@@ -49,7 +49,7 @@ module.exports = {
         break;
       case 'list':
         var inventory = [];
-        var inv = fs.readFileSync("./shop.json").data;
+        var inv = fs.readFileSync("./database/shop.json").data;
         for (let data in inv) {
           console.log(data);
         }
