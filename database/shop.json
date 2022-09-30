@@ -1,78 +1,86 @@
 {
-  name: "Silex Shop",
-  currency: "<:silexCoins:1005119497214107769>",
-  inventory: [
+  "name": "Silex Shop",
+  "currency": "<:silexCoins:1005119497214107769>",
+  "inventory": [
     {
-      name: "Commoner",
-      description: "Become a Commoner, the most common role.",
-      type: "Role",
-      emoji: "🧢",
-      reward: "1004313703258267678",
-      price: 50
+      "name": "Commoner",
+      "description": "Become a Commoner, the most common role.",
+      "type": "Role",
+      "emoji": "🧢",
+      "reward": "1004313703258267678",
+      "price": 50
     },
     {
-      name: "Knight",
-      description: "Rise in rank and become a proud Knight!",
-      type: "Role",
-      emoji: "⚔️",
-      reward: "1004314932684275732",
-      price: 500
+      "name": "Knight",
+      "description": "Rise in rank and become a proud Knight!",
+      "type": "Role",
+      "emoji": "⚔️",
+      "reward": "1004314932684275732",
+      "price": 500
     },
     {
-      name: "Early Access Ticket",
-      description: "With this ticket you can get one-time early access to any of our Queues and Events.",
-      type: "Role",
-      emoji: "🎟️",
-      reward: "1006089838602235925",
-      price: 5000
+      "name": "Early Access Ticket",
+      "description": "With this ticket you can get one-time early access to any of our Queues and Events.",
+      "type": "Role",
+      "emoji": "🎟️",
+      "reward": "1006089838602235925",
+      "price": 5000
     },
     {
-      name: "Baron",
-      description: "Through years of service, you have proven yourself worthy of becoming a Baron!",
-      type: "Role",
-      emoji: "🕴️",
-      reward: "1004314212606160969",
-      price: 10000
+      "name": "Baron",
+      "description": "Through years of service, you have proven yourself worthy of becoming a Baron!",
+      "type": "Role",
+      "emoji": "🕴️",
+      "reward": "1004314212606160969",
+      "price": 10000
     },
     {
-      name: "Viscount",
-      description: "You have worked hard and now achieve the rank of a Viscount!",
-      type: "Role",
-      emoji: "👔",
-      reward: "1004314741998632971",
-      price: 50000
+      "name": "Viscount",
+      "description": "You have worked hard and now achieve the rank of a Viscount!",
+      "type": "Role",
+      "emoji": "👔",
+      "reward": "1004314741998632971",
+      "price": 50000
     },
     {
-      name: "Earl",
-      description: "You have been deemed worthy to become an Earl!",
-      type: "Role",
-      emoji: "🎩",
-      reward: "1004315065928929361",
-      price: 100000
+      "name": "Earl",
+      "description": "You have been deemed worthy to become an Earl!",
+      "type": "Role",
+      "emoji": "🎩",
+      "reward": "1004315065928929361",
+      "price": 100000
     },
     {
-      name: "Duke",
-      description: "Through all your efforts and achievements, you have gained the rank of Duke!",
-      type: "Role",
-      emoji: "💍",
-      reward: "1004315191032434718",
-      price: 500000
+      "name": "Duke",
+      "description": "Through all your efforts and achievements, you have gained the rank of Duke!",
+      "type": "Role",
+      "emoji": "💍",
+      "reward": "1004315191032434718",
+      "price": 500000
     },
     {
-      name: "Prince/Princess",
-      description: "The monarch has deemed you worthy and made you a Prince/Princess",
-      type: "Role",
-      emoji: "🤴",
-      reward: "1004311956448104478",
-      price: 800000
+      "name": "Prince/Princess",
+      "description": "The monarch has deemed you worthy and made you a Prince/Princess",
+      "type": "Role",
+      "emoji": "🤴",
+      "reward": "1004311956448104478",
+      "price": 800000
     },
     {
-      name: "Monarch",
-      description: "You have finally made it to the end! You are now the Monarch!",
-      type: "Role",
-      emoji: "👑",
-      reward: "1004315592565739651",
-      price: 1000000
+      "name": "Monarch",
+      "description": "You have finally made it to the end! You are now the Monarch!",
+      "type": "Role",
+      "emoji": "👑",
+      "reward": "1004315592565739651",
+      "price": 1000000
+    },
+    {
+      "name": "Emperor/Empress",
+      "description": "After ruling for a long time, you finally have enough power to become the Emperor/Empress!",
+      "type": "Role",
+      "emoji": "🌟",
+      "reward": "1014090194170953818",
+      "price": 10000000
     }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "name": "silex-bot",
+  "version": "1.0.0",
+  "description": "<h1> SILEX BOT</h1> <p> A multi-purpose bot made for the SILEX discord, if you see this repo- you're cool B)</p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Allizine/silex-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Allizine/silex-bot/issues"
+  },
+  "homepage": "https://github.com/Allizine/silex-bot#readme",
+  "dependencies": {
+    "@discordjs/builders": "^1.2.0",
+    "ascii-table": "^0.0.9",
+    "discord.js": "^14.5.0",
+    "glob": "^8.0.3",
+    "jsoning": "^0.13.23",
+    "ms": "^2.1.3"
+  }
+}

@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle, ChannelType, PermissionFlagBits } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const fs = require('fs');
 module.exports = {
   name: "shop",
@@ -24,22 +24,25 @@ module.exports = {
       name: "list",
       description: "Shows a list of all Items",
       type: ApplicationCommandOptionType.Subcommand,
-      options: [
-        {
-          name: "name",
-          description: "Provide the name of an Item.",
-          type: ApplicationCommandOptionType.String,
-          required: false,
-        },
-      ],
     },
   ],
 
   run: async (client, interaction) => {
-    const member = interaction.user;
+    const user = interaction.user;
     switch (interaction.options.getSubcommand()) {
       case 'buy':
-
+        var shop = [];
+        var info = JSON.parse(fs.readFileSync("./database/shop.json"));
+        shop.push(info);
+        const inv = shop[0].inventory;
+        var item = interaction.options.getString("item");
+        const roleid = inv.find(r => r.name == item).reward;
+        item = inv.find(i => i.name == item);
+        const guild = client.guilds.cache.get('996664256512655360')
+        const member = guild.members.cache.get(user.id);
+        const role = guild.roles.cache.get(roleid);
+        await member.addRole(role);
+        await interaction.reply({ content: `Successfully purchased \`${item.emoji} ${item.name}\`!`, ephemeral: true });
         break;
       case 'list':
         var shop = [];
@@ -57,11 +60,11 @@ module.exports = {
               .setStyle(ButtonStyle.Primary)
               .setEmoji('⏩')
           );
-        const list1 = new EmbedBuilder()
+        var list1 = new EmbedBuilder()
           .setColor('#00ffff')
           .setAuthor({ name: "Page 1/2" })
           .setTitle(`${shop[0].name}`)
-        const list2 = new EmbedBuilder()
+        var list2 = new EmbedBuilder()
           .setColor('#00ffff')
           .setAuthor({ name: "Page 2/2" })
           .setTitle(`${shop[0].name}`)
@@ -69,32 +72,38 @@ module.exports = {
           let emoji = shop[0].inventory[i].emoji;
           let name = shop[0].inventory[i].name;
           let price = shop[0].inventory[i].price;
-          if (i < 4) {
+          let cur = shop[0].currency;
+          if (i < 5) {
             list1.addFields(
               { name: "Name", value: `${emoji} ${name}`, inline: true },
-              { name: "Price", value: `${price}`, inline: true },
-              { name: "\u200B", value: "\u200B" }
+              { name: "Price", value: `${price} ${cur}`, inline: true },
+              { name: "\u200B", value: "\u200B", inline: true }
             );
-          } else if (i >= 4) {
+          } else if (i >= 5) {
             list2.addFields(
               { name: "Name", value: `${emoji} ${name}`, inline: true },
-              { name: "Price", value: `${price}`, inline: true },
-              { name: "\u200B", value: "\u200B" }
+              { name: "Price", value: `${price} ${cur}`, inline: true },
+              { name: "\u200B", value: "\u200B", inline: true }
             );
           }
         }
         interaction.reply({ embeds: [list1], components: [row] });
-        const collector = interaction.channel.createMessageComponentCollector({ time: 300000 });
+        const collector = interaction.channel.createMessageComponentCollector({ time: 90000 });
         collector.on("collect", async (i) => {
-          if (i.customId == "next") {
+          await i.deferUpdate();
+          if (i.customId == "shopnext") {
             row.components[1].setDisabled(true);
             row.components[0].setDisabled(false);
-            await i.editReply({ embeds: [list2], components: [row] });
-          } else if (i.customId == "prev") {
+            await interaction.editReply({ embeds: [list2], components: [row] });
+          } else if (i.customId == "shopprev") {
             row.components[1].setDisabled(false);
             row.components[0].setDisabled(true);
-            await i.editReply({ embeds: [list1], components: [row] });
+            await interaction.editReply({ embeds: [list1], components: [row] });
           }
+        });
+        collector.on("end", collected => {
+          interaction.editReply({ embeds: [list1], components: [] });
+          console.log(`Collected ${collected.size} Items.`);
         });
         break;
     }
